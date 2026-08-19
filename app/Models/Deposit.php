@@ -1,0 +1,3 @@
+<?php
+namespace App\Models; use Illuminate\Database\Eloquent\Model; use Illuminate\Database\Eloquent\SoftDeletes;
+class Deposit extends Model {use SoftDeletes; protected $fillable=['code','customer_id','officer_id','deposit_date','status','total_weight','total_amount','notes']; protected function casts():array{return ['deposit_date'=>'date','total_weight'=>'decimal:2','total_amount'=>'decimal:2'];} public function customer(){return $this->belongsTo(User::class,'customer_id');} public function officer(){return $this->belongsTo(User::class,'officer_id');} public function details(){return $this->hasMany(DepositDetail::class);} public function histories(){return $this->hasMany(DepositStatusHistory::class);} }

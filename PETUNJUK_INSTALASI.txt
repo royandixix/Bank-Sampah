@@ -1,0 +1,39 @@
+SISTEM PENGELOLAAN BANK SAMPAH BERBASIS LARAVEL
+================================================
+
+Kebutuhan:
+- PHP 8.2 atau lebih baru
+- Composer
+- Ekstensi PHP SQLite / PDO SQLite
+
+CARA MENJALANKAN (Windows / macOS / Linux)
+1. Ekstrak folder proyek.
+2. Buka Terminal / CMD pada folder bank-sampah-laravel.
+3. Jalankan:
+   composer install
+4. Salin file environment:
+   Windows CMD   : copy .env.example .env
+   PowerShell    : Copy-Item .env.example .env
+   macOS/Linux   : cp .env.example .env
+5. Jalankan:
+   php artisan key:generate
+6. Pastikan file database/database.sqlite tersedia. File kosong sudah disertakan.
+7. Jalankan database + data contoh:
+   php artisan migrate:fresh --seed
+8. Buat link file upload:
+   php artisan storage:link
+9. Jalankan aplikasi:
+   php artisan serve
+10. Buka browser:
+   http://127.0.0.1:8000
+
+Jika port 8000 dipakai:
+   php artisan serve --port=8001
+
+RESET DATA DEMO:
+   php artisan migrate:fresh --seed
+
+CATATAN:
+- Database default memakai SQLite agar praktis dan tidak perlu Laragon/MySQL.
+- Jika ingin MySQL, ubah DB_CONNECTION dan parameter DB_* di file .env.
+- Tampilan menggunakan Bootstrap CDN, jadi tidak membutuhkan npm install.

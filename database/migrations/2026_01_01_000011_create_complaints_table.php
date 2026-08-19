@@ -1,0 +1,3 @@
+<?php
+use Illuminate\Database\Migrations\Migration; use Illuminate\Database\Schema\Blueprint; use Illuminate\Support\Facades\Schema;
+return new class extends Migration {public function up():void{Schema::create('complaints',function(Blueprint $t){$t->id();$t->foreignId('customer_id')->constrained('users');$t->string('subject');$t->text('message');$t->string('attachment')->nullable();$t->enum('status',['open','processed','resolved','closed'])->default('open');$t->text('response')->nullable();$t->timestamps();$t->softDeletes();});}public function down():void{Schema::dropIfExists('complaints');}};

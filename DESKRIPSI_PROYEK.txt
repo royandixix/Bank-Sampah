@@ -1,0 +1,18 @@
+Judul: Sistem Pengelolaan Bank Sampah Berbasis Laravel
+
+Masalah:
+Pencatatan setoran sampah, harga per kilogram, saldo nasabah, dan penarikan sering dilakukan manual sehingga rawan salah hitung dan sulit dipantau.
+
+Solusi:
+Aplikasi Laravel yang mencatat data sampah dan transaksi setoran secara terpusat. Nilai setoran dihitung otomatis berdasarkan berat dan harga per kilogram. Saldo nasabah tercatat melalui ledger dan dapat ditarik melalui alur persetujuan petugas.
+
+Role:
+1. Admin: mengelola pengguna, kategori, sampah, transaksi, dashboard, laporan.
+2. Petugas: mengelola sampah, mencatat setoran, memproses status transaksi dan pengaduan, melihat laporan.
+3. Nasabah: melihat setoran dan saldo sendiri, mengajukan penarikan, membuat pengaduan.
+
+Transaksi utama:
+Setoran sampah: pending -> weighed -> completed/cancelled.
+
+Transaksi tambahan:
+Penarikan saldo: pending -> approved -> paid/rejected.

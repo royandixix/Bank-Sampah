@@ -1,0 +1,3 @@
+<?php
+use Illuminate\Database\Migrations\Migration; use Illuminate\Database\Schema\Blueprint; use Illuminate\Support\Facades\Schema;
+return new class extends Migration {public function up():void{Schema::create('deposits',function(Blueprint $t){$t->id();$t->string('code')->unique();$t->foreignId('customer_id')->constrained('users');$t->foreignId('officer_id')->nullable()->constrained('users')->nullOnDelete();$t->date('deposit_date');$t->enum('status',['pending','weighed','completed','cancelled'])->default('pending')->index();$t->decimal('total_weight',12,2)->default(0);$t->decimal('total_amount',14,2)->default(0);$t->text('notes')->nullable();$t->timestamps();$t->softDeletes();});}public function down():void{Schema::dropIfExists('deposits');}};

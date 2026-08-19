@@ -1,0 +1,3 @@
+<?php
+namespace App\Http\Controllers; use App\Models\{Deposit,Withdrawal}; use Illuminate\Http\Request;
+class ReportController extends Controller {public function index(Request $r){abort_unless(in_array(auth()->user()->role,['admin','petugas'],true),403);$from=$r->get('from',now()->startOfMonth()->toDateString());$to=$r->get('to',now()->toDateString());$deposits=Deposit::with('customer')->whereBetween('deposit_date',[$from,$to])->where('status','completed')->get();$withdrawals=Withdrawal::with('customer')->whereBetween('created_at',[$from.' 00:00:00',$to.' 23:59:59'])->where('status','paid')->get();return view('reports.index',compact('from','to','deposits','withdrawals'));}}

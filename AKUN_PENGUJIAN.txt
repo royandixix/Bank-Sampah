@@ -1,0 +1,22 @@
+AKUN PENGUJIAN
+==============
+
+1. ADMIN
+Email    : admin@banksampah.test
+Password : password
+Role     : admin
+
+2. PETUGAS
+Email    : petugas@banksampah.test
+Password : password
+Role     : petugas
+
+3. NASABAH
+Email    : nasabah@banksampah.test
+Password : password
+Role     : nasabah
+
+4. NASABAH TAMBAHAN
+Email    : siti@banksampah.test
+Password : password
+Role     : nasabah

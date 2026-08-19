@@ -1,0 +1,3 @@
+<?php
+use Illuminate\Database\Migrations\Migration; use Illuminate\Database\Schema\Blueprint; use Illuminate\Support\Facades\Schema;
+return new class extends Migration {public function up():void{Schema::create('withdrawals',function(Blueprint $t){$t->id();$t->string('code')->unique();$t->foreignId('customer_id')->constrained('users');$t->foreignId('processed_by')->nullable()->constrained('users')->nullOnDelete();$t->decimal('amount',14,2);$t->enum('status',['pending','approved','paid','rejected'])->default('pending')->index();$t->string('payment_proof')->nullable();$t->text('notes')->nullable();$t->timestamps();$t->softDeletes();});}public function down():void{Schema::dropIfExists('withdrawals');}};

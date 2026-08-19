@@ -1,0 +1,3 @@
+<?php
+use Illuminate\Database\Migrations\Migration; use Illuminate\Database\Schema\Blueprint; use Illuminate\Support\Facades\Schema;
+return new class extends Migration {public function up():void{Schema::create('account_ledgers',function(Blueprint $t){$t->id();$t->foreignId('customer_id')->constrained('users');$t->enum('type',['credit','debit']);$t->string('reference_type');$t->unsignedBigInteger('reference_id');$t->decimal('amount',14,2);$t->string('description');$t->timestamps();$t->unique(['reference_type','reference_id']);});}public function down():void{Schema::dropIfExists('account_ledgers');}};

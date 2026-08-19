@@ -1,0 +1,3 @@
+<?php
+use Illuminate\Database\Migrations\Migration; use Illuminate\Database\Schema\Blueprint; use Illuminate\Support\Facades\Schema;
+return new class extends Migration {public function up():void{Schema::create('wastes',function(Blueprint $t){$t->id();$t->foreignId('waste_category_id')->constrained()->cascadeOnUpdate()->restrictOnDelete();$t->string('name');$t->decimal('price_per_kg',14,2)->default(0);$t->decimal('stock_kg',12,2)->default(0);$t->string('image')->nullable();$t->boolean('is_active')->default(true);$t->timestamps();$t->softDeletes();$t->unique(['waste_category_id','name']);});}public function down():void{Schema::dropIfExists('wastes');}};
